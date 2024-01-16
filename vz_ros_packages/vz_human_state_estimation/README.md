@@ -5,7 +5,7 @@ Hardware dependencies:
 - [RGBD Camera node](../vz_ros_wrappers/scripts/publish_rgbd.py)
 - [RPLIDAR A1](http://wiki.ros.org/rplidar) that is default available to the robot and has a launch configuration [here](../vz_ros_wrappers/launch/lidar.launch)
 
-Package dependencies: `vz_face_recognition`, `vz_pedestrian_tracker`, [leg_tracker](https://github.com/Visual_Acoustic_Nav_Petra_2023/leg_tracker)
+Package dependencies: `vz_face_recognition`, `vz_pedestrian_tracker`, [leg_tracker](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/leg_tracker)
 
 Inputs:
 - msg: [vz_ros_wrappers/Bounding_Boxes_3D](../vz_ros_wrappers/msg/Bounding_Boxes_3D.msg), [leg_tracker/PersonArray](https://github.com/Visual_Acoustic_Nav_Petra_2023/leg_tracker/blob/vz_deliverables/msg/PersonArray.msg) 
