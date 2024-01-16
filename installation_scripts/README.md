@@ -2,7 +2,7 @@
 
 Home of the installation scripts needed to facilitate the environment setup and software installation on a new Strech RE1 robot, manufactured by Hello Robot.
 
-The purpose of the installation script `setup_install.sh` is to provide a convenient quick setup of the environment created for the Verizon (VZ) project. This should always be run for a [first-time setup on the robot](https://github.com/Visual_Acoustic_Nav_Petra_2023/vz_ros_packages#first-time-setup-on-robot). 
+The purpose of the installation script `setup_install.sh` is to provide a convenient quick setup of the environment created for the Verizon (VZ) project. This should always be run for a [first-time setup on the robot](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/tree/main/vz_ros_packages#first-time-setup-on-robot). 
 
 The setup script will first install [ROS Noetic](http://wiki.ros.org/noetic) and create a catkin workspace. The end-result of executing `setup_install.sh` should be to have all Python and ROS dependencies installed on your machine, as well as a built ROS workspace that you can immediately start running processes from, namely `~/catkin_ws/`.
 
