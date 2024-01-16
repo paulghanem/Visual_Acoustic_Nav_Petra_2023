@@ -1,0 +1,12 @@
+<launch>
+  <param name="registering" value='true'/> 
+  <param name="face_registration" value='false'/> 
+  <param name="run_navigation" value='false'/> 
+
+  <param name="asa_feedback_topic" value='asa_test_topic'/> 
+  <param name="orvs_feedback_topic" value='orvs_test_topic'/> 
+  <param name="vbpr_feedback_topic" value='vbpr_test_topic'/> 
+  <param name="inbed_feedback_topic" value='inbed_test_topic'/> 
+  <!-- basic launch of only the node to manually send messges to test-->
+  <node name="scheduler" pkg="vz_stretch_navigation" type="Scheduler.py"/>
+</launch>

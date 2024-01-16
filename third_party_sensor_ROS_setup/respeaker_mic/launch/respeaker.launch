@@ -1,0 +1,4 @@
+<launch>
+    <rosparam ns="respeaker_mic" command="load" file="$(find respeaker_mic)/config/audio_params.yaml" />
+    <node name="audio_capture" pkg="respeaker_mic" type="respeaker_node.py" output="screen" />
+</launch>

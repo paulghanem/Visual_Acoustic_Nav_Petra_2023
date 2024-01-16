@@ -1,0 +1,22 @@
+<launch>
+
+  <!-- <arg name="map_yaml" default="/$(find move_sound)/maps/map1.yaml" doc="filepath to previously captured map (required)" />
+
+  <arg name="rviz"                   default="true"                      doc="whether to show Rviz" /> -->
+
+  <!-- STRETCH VZ navigation file -->
+  <!-- <include file="/home/hello-robot/catkin_ws/src/stretch_ros/vz_stretch_navigation/launch/navigation_trial_loc.launch" pass_all_args="true" /> -->
+
+  <!-- ADD TF sensors -->
+  <include file="$(find move_sound)/launch/add_2sensors.launch" />
+
+  <!-- DOA FILE -->
+  <!-- node name="doa_node" pkg="move_sound" type="doa.py"/> -->
+  <!-- node name="n_" pkg="move_sound" type="map_proc2"/> -->
+  <!-- node name="bivariate_node" pkg="move_sound" type="bivariate.py"/ -->
+  
+  <node name="doa_node" pkg="move_sound" type="dir_from_sensor.py"/>
+  <node name="CameraFrameConverterNode2" pkg="move_sound" type="2dTo3d.py"/>
+  <node name="chec_dist" pkg="move_sound" type="trigger_check_dist.py"/>
+
+</launch>

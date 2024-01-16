@@ -1,0 +1,4 @@
+<launch>
+    <!-- Launch Structure core node for vital sensing-->
+    <include file="$(find structure_core_ros_driver)/launch/sc.launch"/>
+</launch>

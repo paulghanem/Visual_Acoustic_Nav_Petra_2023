@@ -1,0 +1,14 @@
+<launch>
+
+  <!--Note :  If running standalone need to run the thermal -->
+  <!-- RVIZ -->
+  <arg name="rviz"                   default="true"                      doc="whether to show Rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vz_ros_wrappers)/rviz/inbed.rviz" if="$(arg rviz)" />
+ 
+  <!-- INBED NODE -->
+  <node pkg="vz_inbed" name="inbed_node" type="run_ros.py"/>
+
+  <!-- RUN ON CPU OR GPU -->
+  <param name="inbed_computer" type="string" value="gpu" />
+  
+</launch>

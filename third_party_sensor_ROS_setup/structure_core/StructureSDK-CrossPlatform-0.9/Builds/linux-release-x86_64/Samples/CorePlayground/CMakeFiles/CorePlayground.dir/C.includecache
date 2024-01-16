@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hello-robot/catkin_ws/src/stretch_ros/vz_optical_remote_vital_sensing/StructureSDK-CrossPlatform-0.9/Samples/CorePlayground/PlayIcon.c
+stddef.h
+-
+
+/home/hello-robot/catkin_ws/src/stretch_ros/vz_optical_remote_vital_sensing/StructureSDK-CrossPlatform-0.9/Samples/CorePlayground/StopIcon.c
+stddef.h
+-
+

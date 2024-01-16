@@ -1,0 +1,6 @@
+<launch>
+    <param name="/stretch_driver/broadcast_odom_tf" type="bool" value="true"/>
+
+    <include file="$(find stretch_core)/launch/stretch_driver.launch" pass_all_args="true" />
+    <include file="$(find stretch_core)/launch/rplidar.launch" />
+</launch>

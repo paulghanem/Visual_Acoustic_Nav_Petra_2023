@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSampleProcessing.a CMakeFiles/SampleProcessing.dir/FrameRenderer.cpp.o
+/usr/bin/ranlib libSampleProcessing.a

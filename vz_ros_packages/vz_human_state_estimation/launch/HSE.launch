@@ -1,0 +1,26 @@
+<launch>          
+      <!-- RVIZ -->
+      <arg name="rviz"                   default="false"                      doc="whether to show Rviz" />
+      <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vz_ros_wrappers)/rviz/hse.rviz" if="$(arg rviz)" />
+
+      <!-- PED TRACKER -->
+      <include file="$(find vz_pedestrian_tracker)/launch/pedestrian_tracker.launch"/>
+
+      <!-- FACE TRACKER -->
+      <include file="$(find vz_face_recognition)/launch/face_recognition.launch"/>
+
+      <!-- CONVERT PEDESTRIAN AND FACE TRACKER OUTPUTS FROM PIXEL TO 3D FOR FUSION -->
+      <node pkg="vz_ros_wrappers" type="bbox2D_to_pos3D.py" name="bbox2D_to_pos3D"/>
+
+      <!-- PED FACE IMAGES FOR VIZ-->
+      <node pkg="vz_ros_wrappers" name="repub_ped_face" type="ped_face_imgs.py"/>
+
+      <!-- LEG TRACKER -->
+      <include file="$(find leg_tracker)/launch/leg_transformer.launch"/>
+
+      <!-- HUMAN STATE ESTIMATION KALMAN FILTER -->
+      <node pkg="vz_human_state_estimation" type="ros_interface.py" name="human_state_estimation"/>
+
+      <!-- GENERATE INPUT FOR VBPR MODULE -->
+      <include file="$(find vz_ros_wrappers)/launch/pos3D_to_bbox2D.launch"/>
+</launch>

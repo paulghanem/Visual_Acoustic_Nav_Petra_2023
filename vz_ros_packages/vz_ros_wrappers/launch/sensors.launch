@@ -1,0 +1,48 @@
+<!-- Unified launch file to start up all the sensors -->
+
+<launch>
+    <!-- Which sensors to start-->
+    <arg name="start_rgbd"                       default="true"                      doc="Launch RGBD alone" />
+    <arg name="start_thermal"                    default="true"                      doc="Launch Thermal alone" />
+    <arg name="start_ir"                         default="true"                      doc="Launch IR alone" />
+    <arg name="start_lidar"                      default="false"                     doc="Launch Lidar alone" />
+    <arg name="start_microphone"                 default="true"                      doc="Launch Microphone alone" />
+
+    <!-- REALSENSE D435i RGBD-->
+    <group if="$(arg start_rgbd)">
+        <include file="$(find vz_ros_wrappers)/launch/rgbd.launch"/>
+    </group>
+    <!-- ========== -->
+
+
+    <!-- =========== -->
+    <!-- THERMAL CAMERA-->
+    <group if="$(arg start_thermal)">
+        <include file="$(find vz_ros_wrappers)/launch/thermal.launch"/>
+    </group>
+    <!-- =========== -->
+    
+
+    <!-- =========== -->
+    <!-- STRUCTURE CORE IR CAMERA -->
+    <group if="$(arg start_ir)">
+        <include file="$(find vz_ros_wrappers)/launch/ir.launch"/>
+    </group>
+    <!-- =========== -->
+
+    <!-- =========== -->
+    <!-- LIDAR -->
+    <group if="$(arg start_lidar)">
+        <include file="$(find vz_ros_wrappers)/launch/lidar.launch"/>
+    </group>
+    <!-- =========== -->
+
+    <!-- =========== -->
+
+    <!-- Launch the respeaker mic node -->
+    <group if="$(arg start_microphone)">
+        <include file="$(find respeaker_mic)/launch/respeaker.launch"/>
+    </group>
+
+    <!-- ============ -->
+</launch>

@@ -1,0 +1,29 @@
+<launch>
+  <arg name="teleop_type" default="keyboard" doc="how to teleop ('keyboard', 'joystick', or 'none')" />
+
+  <arg name="map_yaml" default="/$(find vz_stretch_navigation)/maps/lobby.yaml" doc="filepath to previously captured map (required)" />
+
+  <arg name="rviz"                   default="true"                      doc="whether to show Rviz" />
+
+  <!-- Switch Stretch to navigation mode -->
+  <param name="/stretch_driver/mode" type="string" value="navigation"/>
+
+  <include file="$(find vz_ros_wrappers)/launch/lidar.launch"/>
+
+  <!-- MAP SERVER -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_yaml)" />
+
+  <!-- LOCALIZATION -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+
+  <!-- TELEOP -->
+  <include file="$(find stretch_core)/launch/teleop_twist.launch">
+    <arg name="teleop_type" value="$(arg teleop_type)" />
+    <arg name="linear" value="0.04" />
+    <arg name="angular" value="0.1" />
+    <arg name="twist_topic" value="/stretch/cmd_vel" />
+  </include>
+
+  <!-- VISUALIZE -->
+  <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vz_ros_wrappers)/rviz/mapping.rviz" if="$(arg rviz)"/>
+</launch>

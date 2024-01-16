@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<launch>
+	<!-- params -->
+	<param name ="leg_tracker_topic" value="/people_tracked" />
+	<param name ="transformed_leg_tracker_topic" value="/transformed_leg_poses" />
+	<param name="leg_tracker_target_frame" value="odom" />
+
+	<include file="$(find leg_tracker)/launch/joint_leg_tracker.launch" />
+
+	<!-- nodes -->
+	<node pkg="leg_tracker" type="leg_transformer.py" name="leg_transformer" output="screen" />
+
+</launch>

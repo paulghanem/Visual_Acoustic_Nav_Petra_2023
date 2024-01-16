@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -pthread -Wl,-rpath,'$ORIGIN' CMakeFiles/SimpleStreamer.dir/SimpleStreamer.cpp.o -o SimpleStreamer  ../../../../Libraries/Structure/Linux/x86_64/libStructure.so 

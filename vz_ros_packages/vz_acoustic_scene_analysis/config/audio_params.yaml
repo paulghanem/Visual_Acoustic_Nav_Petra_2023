@@ -1,0 +1,17 @@
+timeout_milliseconds: 100000
+vendor_id: 0x2886
+product_id: 0x0018
+respeaker_rate: 16000
+respeaker_channels: 6 # must flash 6_channels_firmware.bin first
+respeaker_width: 2
+respeaker_index: get_respeaker_device_id()
+chunk: 1024
+chunk_secs: 1
+seconds: 2
+percent_buffer: 0.5 # percent of SECONDS (0-1)
+flag: True
+
+# Registration Params
+registering: False
+register_chunk_secs: 0.5
+register_seconds: 10

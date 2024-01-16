@@ -1,0 +1,41 @@
+<launch>
+
+
+    <!-- ============= -->
+    <!-- ORVS Specific  -->
+    <!-- Launch the node to publish bounding boxes in IR and thermal camera frames -->
+    <node pkg="vz_optical_remote_vital_sensing" type="ir_and_thermal_bb.py" name="ir_and_thermal_bb"/>
+
+    <!-- Launch the node to publish bounding boxes in IR and thermal camera frames -->
+    <node pkg="vz_optical_remote_vital_sensing" type="text_overlay.py" name="orvs_text_overlay"/>
+
+    <!-- Launch the node for the Heart  Rate Submodule -->
+    <node pkg="vz_optical_remote_vital_sensing" type="ovrs_hr_ros_interface.py" name="occ_capture"/>
+
+    <!-- Launch the node for the Resp Rate Submodule -->
+    <node pkg="vz_optical_remote_vital_sensing" type="orvs_rr_ros_interface.py" name="bpm_capture"/>
+        
+    <!-- Params: -->
+    <param name="rec_secs" type="int" value="30" />
+    <!-- ============= -->
+
+
+    <!-- ======== -->
+    <!-- Launches contingent on if running alone or as a whole -->
+    <!-- Also needs sensors.launch but that will assumed to be launched appropriately -->
+
+    <arg name="start_orvs_standalone"                   default="false"                      doc="Launch ORVS on it's own" />
+    <group if="$(arg start_orvs_standalone)">
+        <include file="$(find vz_face_recognition)/launch/face_recognition.launch"/>
+    </group>
+    <!-- ========== -->
+
+
+    <!-- ======== -->
+    <!-- RViz Setup-->
+    <arg name="rviz"                   default="true"                      doc="whether to show Rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vz_ros_wrappers)/rviz/orvs.rviz" if="$(arg rviz)" />
+    <!-- ======== -->
+
+
+</launch>

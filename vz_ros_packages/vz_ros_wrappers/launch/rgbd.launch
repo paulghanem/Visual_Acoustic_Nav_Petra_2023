@@ -1,0 +1,17 @@
+<launch>    
+    <!-- REALSENSE D435i -->
+    <include file="$(find stretch_core)/launch/d435i_high_resolution.launch" pass_all_args="true">
+        <arg name="filters" value=" "/>
+    </include>
+
+    <node name="d435i_configure" pkg="stretch_core" type="d435i_configure">
+        <param name="initial_mode" type="string" value="High Accuracy"/>
+    </node>
+
+    <!-- ROS node for RGBD image publishing-->
+    <node pkg="vz_ros_wrappers" type="publish_rgbd.py" name="RGBD"/>
+
+    <node pkg="image_transport" type="republish" name="RGBDCompressed"
+        args="raw in:=/D435i/image_raw compressed out:=/D435i/image_raw"/>
+
+</launch>

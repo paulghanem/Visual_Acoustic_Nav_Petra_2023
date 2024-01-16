@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="required" default="false" />
+ 	<arg name="serial_number" default="null" />
+	<arg name="name" default="sc" />
+	
+	<arg name="visible_enable" default="true" />
+	<arg name="visible_apply_gamma_correction" default="true" />
+	<arg name="visible_framerate" default="30.0" />
+	<arg name="visible_resolution" default="Default" />
+	
+	<arg name="infrared_enable" default="true" />
+	<arg name="infrared_framerate" default="30.0" />
+	<arg name="infrared_mode" default="LeftCameraOnly" />
+	<arg name="infrared_resolution" default="Default" />
+	<arg name="infrared_disable_intensity_balance" default="true" />
+	
+	<arg name="imu_enable" default="true" />
+	<arg name="imu_update_rate" default="Default" />
+	
+	<arg name="depth_enable" default="true" />
+	<arg name="depth_aligned_enable" default="false" />
+	<arg name="depth_pcloud_enable" default="false" />
+	<arg name="depth_framerate" default="30.0" />
+	<arg name="depth_resolution" default="Default" />
+	<arg name="depth_apply_correction_before_stream" default="false" />
+		
+	<arg name="demosaic_method" default="EdgeAware" />
+	<arg name="initial_projector_power" default="1.0" />
+	<arg name="latency_reducer_enabled" default="true" />
+	<arg name="sensor_initialization_timeout" default="20000" />
+	<arg name="frame_sync_enabled" default="true" />
+	<arg name="rgbd_enable" default="false" />
+	<arg name="remove_nans" default="false" />
+	<arg name="rviz_frame" default="false" />
+	<arg name="ros_odometry" default="false" />
+	
+
+	<node pkg="nodelet" type="nodelet" name="$(arg name)_node" args="manager" output="screen" required="$(arg required)"/>
+
+	<node pkg="nodelet" type="nodelet" name="$(arg name)_nodelet" args="load structure_core/Driver $(arg name)_node" output="screen" required="$(arg required)">
+
+	 	<param name="visible_enable"                     		value="true" />
+	 	<param name="visible_apply_gamma_correction"     		value="true" />
+	 	<param name="visible_framerate"                  		value="10.0" />
+	 	<param name="visible_resolution"                 		value="Default" /> <!--HowMany-->
+        <param name="infrared_enable"                    		value="true" />
+        <param name="infrared_framerate"                 	    value="10.0" />
+        <param name="infrared_mode"                             value="LeftCameraOnly" /> <!--HowMany, BothCameras, RightCameraOnly, LeftCameraOnly-->
+        <param name="infrared_resolution"                       value="Default" /> <!--HowMany-->
+        <param name="infrared_disable_intensity_balance"        value="true" /> 
+        <param name="imu_enable"                                value="false" />
+        <param name="imu_update_rate"            				value="Default" /> <!--HowMany, AccelAndGyro_1000Hz, AccelAndGyro_800Hz, AccelAndGyro_200Hz, AccelAndGyro_100Hz--> 
+        <param name="depth_enable"     	    					value="false" />
+        <param name="depth_aligned_enable"                      value="false" />
+        <param name="depth_pcloud_enable"                       value="false" />
+        <param name="depth_framerate"       					value="10.0" />
+        <param name="depth_resolution"     						value="Default" /> <!--SXGA, VGA, QVGA, HowMany, _1280x960, _640x480, _320x240--> 
+        <param name="depth_apply_correction_before_stream"      value="false" />
+        <param name="demosaic_method"      					    value="EdgeAware" /> <!-- Bilinear, Grouping, HowMany, Default-->
+        <param name="initial_projector_power"             		value="1.0" /> <!--0.0 ... 1.0-->
+	 	<param name="latency_reducer_enabled"       			value="true" />
+	 	<param name="sensor_initialization_timeout"      		value="20000" />
+	 	<param name="sensor_serial"      						value="null" />
+	 	<param name="frame_sync_enabled"                        value="true" />
+        <param name="name"                                      value="$(arg name)" />
+		
+	 </node>
+
+
+	<node if="$(arg rgbd_enable)" pkg="nodelet" type="nodelet" name="$(arg name)_PointCloudXyzrgbNodelet"
+        args="load structure_core/PointCloudXyzrgbNodelet $(arg name)_node"  output="screen">
+        <param name="name"                                value="$(arg name)" />
+        <param name="queue_size"                          value="50" />
+        <param name="remove_nans"                         value="$(arg remove_nans)" />
+        <param name="rviz_frame"                          value="$(arg rviz_frame)" />
+    </node>
+
+    <node if="$(arg depth_pcloud_enable)" pkg="nodelet" type="nodelet" name="$(arg name)_PointCloudXyzNodelet"
+        args="load structure_core/PointCloudXyzNodelet $(arg name)_node"  output="screen">
+        <param name="name"                                value="$(arg name)" />
+        <param name="queue_size"                          value="50" />
+        <param name="remove_nans"                         value="$(arg remove_nans)" />
+        <param name="rviz_frame"                          value="$(arg rviz_frame)" />
+    </node>
+
+
+	 <group unless="$(arg ros_odometry)">
+  		<node pkg="tf" type="static_transform_publisher" name="$(arg name)_tf_broadcaster"  args="0 0 0 0 0 0 $(arg name)_map $(arg name)_depth_frame 50" />
+	    <node pkg="tf" type="static_transform_publisher" name="$(arg name)_tf_imu_broadcaster"  args="0 0 0 0 0 0 $(arg name)_map $(arg name)_imu_frame 50" />-->
+	    <node pkg="tf" type="static_transform_publisher" name="$(arg name)_tf_pc_broadcaster"  args="0 0 0 0 0 0 $(arg name)_map $(arg name)_cloud_tf_frame 50" />-->
+	</group>
+
+	<param name="infrared_topic" type="string" value="/sc/infrared_left/image" />
+
+	
+</launch>

@@ -1,0 +1,20 @@
+<launch>
+      <!-- SETUP  -->
+      <param name="use_sim_time" value="true"/>
+      <arg name="bag_file" default="test.bag"/>
+
+      <node pkg="rosbag" type="play" name="player" args="--clock $(env VZ_BAG_DIR)/$(arg bag_file) -l -r 1.0"/>
+        
+      <!-- RVIZ -->
+      <arg name="rviz" default="false" doc="whether to show Rviz" />
+      <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vz_ros_wrappers)/rviz/hse.rviz" if="$(arg rviz)" />
+
+      <!-- CONVERT PEDESTRIAN AND FACE TRACKER OUTPUTS FROM PIXEL TO 3D FOR FUSION -->
+      <node pkg="vz_ros_wrappers" type="bbox2D_to_pos3D.py" name="bbox2D_to_pos3D"/>
+
+      <!-- HUMAN STATE ESTIMATION KALMAN FILTER -->
+      <node pkg="vz_human_state_estimation" type="ros_interface.py" name="human_state_estimation"/>
+
+      <!-- GENERATE INPUT FOR VBPR MODULE -->
+      <include file="$(find vz_ros_wrappers)/launch/pos3D_to_bbox2D.launch"/>
+</launch>

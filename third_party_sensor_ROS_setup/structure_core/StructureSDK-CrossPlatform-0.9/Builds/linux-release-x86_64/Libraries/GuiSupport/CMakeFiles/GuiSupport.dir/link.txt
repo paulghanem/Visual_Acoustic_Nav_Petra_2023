@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGuiSupport.a CMakeFiles/GuiSupport.dir/Drawing.cpp.o CMakeFiles/GuiSupport.dir/FileSelector.cpp.o CMakeFiles/GuiSupport.dir/Layout.cpp.o CMakeFiles/GuiSupport.dir/Style.cpp.o CMakeFiles/GuiSupport.dir/Utility.cpp.o CMakeFiles/GuiSupport.dir/CommandLine.cpp.o CMakeFiles/GuiSupport.dir/Window_Desktop.cpp.o
+/usr/bin/ranlib libGuiSupport.a

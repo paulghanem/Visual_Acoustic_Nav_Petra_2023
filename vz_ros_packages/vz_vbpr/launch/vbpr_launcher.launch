@@ -1,0 +1,8 @@
+<launch>
+    
+    <arg name="rviz"                   default="true"                      doc="whether to show Rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vz_ros_wrappers)/rviz/vbpr.rviz" if="$(arg rviz)" />
+
+    <node pkg="vz_vbpr" name="vbpr_node" type="demo_VZ_VBPR.py" output="screen"/>
+      
+</launch>

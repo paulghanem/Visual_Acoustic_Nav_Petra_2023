@@ -1,0 +1,6 @@
+<launch>
+      <!-- If launching standalone need to launch RGBD camera separately-->
+      
+      <!-- Pedestrian tracker node -->
+      <node pkg="vz_pedestrian_tracker" type="image_converter_node" name="Pedestrian_Tracker"/>
+</launch>

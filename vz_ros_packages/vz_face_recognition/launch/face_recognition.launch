@@ -1,0 +1,10 @@
+<launch>
+        <!-- If launching standalone need to launch RGBD camera -->
+        <arg name="register" default="false" />
+
+        <!-- Face recognition node -->
+        <!-- Params: -->
+        <param name="face_registration" type="bool" value="$(arg register)"/>
+        <param name="face_registration_num_frames" type="int" value="300" />
+        <node pkg="vz_face_recognition" type="ros_interface.py" name="face_recognition" output="screen"/>
+</launch>

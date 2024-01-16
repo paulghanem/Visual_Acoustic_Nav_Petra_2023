@@ -1,0 +1,5 @@
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="respeaker1_broadcaster" args="-0.118 0.131 1.422 0 0 -1.0 1 base_link sensor1 100" />
+<!--x y z yaw(z) pitch(y) roll(x)-->
+<node pkg="tf" type="static_transform_publisher" name="respeaker2_broadcaster" args="-0.118 -0.142 1.422 0 0 1.0 1 base_link sensor2 100" />
+</launch>
