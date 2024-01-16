@@ -3,7 +3,7 @@
 
 Hardware dependencies: [RPLIDAR A1](http://wiki.ros.org/rplidar) that is default available to the robot and has a launch configuration [here](../vz_ros_wrappers/launch/lidar.launch)
 
-Package dependencies: All the navigation packages listed in [stretch_navigation](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023)/stretch_ros/stretch_navigation/package.xml), as well as the [TEB local planner](http://wiki.ros.org/teb_local_planner)
+Package dependencies: All the navigation packages listed in [stretch_navigation](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/stretch_ros/stretch_navigation/package.xml), as well as the [TEB local planner](http://wiki.ros.org/teb_local_planner)
 
 Inputs/Outputs: Numerous publisher-subscribers related to navigation and mapping. I recommend getting acquainted with the [Navigation Stack tutorials](http://wiki.ros.org/navigation) to build familiarity with the typical input/output topics.
 
