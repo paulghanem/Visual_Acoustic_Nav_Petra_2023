@@ -25,8 +25,7 @@ In order to use our human tracker, all the required packages described in  [vz_r
 The experiments reported in the publication can be run by executing
 
 ```
-python benchmarks/run_real_world_tasks/run_benchmark_experiments.py
-python benchmarks/run_real_world_tasks/run_large_scale_experiment.py
+roslaunch move_sound new_launch.launch
 ```
 # Video results
 A video deomnstrating human tracking is presented in the two following videos. You can watch it with 2x speed or more to speed it up: 
