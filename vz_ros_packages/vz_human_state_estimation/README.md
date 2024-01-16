@@ -8,7 +8,7 @@ Hardware dependencies:
 Package dependencies: `vz_face_recognition`, `vz_pedestrian_tracker`, [leg_tracker](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/tree/main/leg_tracker)
 
 Inputs:
-- msg: [vz_ros_wrappers/Bounding_Boxes_3D](../vz_ros_wrappers/msg/Bounding_Boxes_3D.msg), [leg_tracker/PersonArray](https://github.com/Visual_Acoustic_Nav_Petra_2023/leg_tracker/blob/vz_deliverables/msg/PersonArray.msg) 
+- msg: [vz_ros_wrappers/Bounding_Boxes_3D](../vz_ros_wrappers/msg/Bounding_Boxes_3D.msg), [leg_tracker/PersonArray](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/tree/main/leg_tracker/msg/PersonArray.msg) 
 - topics: "/bb_cameraframe_face", "/bb_cameraframe_person", "/transformed_leg_poses"
 
 Outputs:
