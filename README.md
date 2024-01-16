@@ -2,7 +2,7 @@
 
 This is the companion code for Human tracking algorithm reported in the paper
 Sporadic Audio-Visual Embodied Assistive Robot Navigation For Human Tracking by Singh,Ghanem and Padir, PETRA 2023. The paper can
-be found here (https://dl.acm.org/doi/pdf/10.1145/3594806.3594845).Please cite the
+be found here (https://dl.acm.org/doi/pdf/10.1145/3594806.3594845). Please cite the
 above paper when reporting, reproducing or extending the results.
 
 ## Purpose of the project
