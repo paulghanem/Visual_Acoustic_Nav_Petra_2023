@@ -27,6 +27,12 @@ The experiments reported in the publication can be run by executing
 ```
 roslaunch move_sound new_launch.launch
 ```
+
+and then running the following script  [move_test](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/blob/main/move_sound/scripts/move_test.py)
+```
+python move_sound/scripts/move_test.py
+```
+
 # Video results
 A video deomnstrating human tracking is presented in the two following videos. You can watch it with 2x speed or more to speed it up: 
 https://youtu.be/qnrUitc_2Tw
