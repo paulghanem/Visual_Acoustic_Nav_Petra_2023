@@ -46,9 +46,9 @@ Essentially there is a ROS package for each of the project modules. Please refer
 
 The following ROS packages have been imported into the VZ Github organization from third party repositories.
 
-* [Stretch ROS](https://github.com/Visual_Acoustic_Nav_Petra_2023/stretch_ros): The robot comes shipped with manufacturer developed ROS drivers that help us get started. The official git repository for this can be found [here](https://github.com/hello-robot/stretch_ros).
-* [Leg Tracker](https://github.com/Visual_Acoustic_Nav_Petra_2023/leg_tracker): A ROS package that uses LiDAR data (RPLidar) and outputs leg detections. This is used as one of the inputs for Human State Estimation.
-* [Vision OpenCV](https://github.com/Visual_Acoustic_Nav_Petra_2023/vision_opencv): Packages for interfacing ROS with OpenCV, a library of programming functions to achieve real-time computer vision.
+* [Stretch ROS](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/tree/main/stretch_ros): The robot comes shipped with manufacturer developed ROS drivers that help us get started. The official git repository for this can be found [here](https://github.com/hello-robot/stretch_ros).
+* [Leg Tracker](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/tree/main/leg_tracker): A ROS package that uses LiDAR data (RPLidar) and outputs leg detections. This is used as one of the inputs for Human State Estimation.
+* [Vision OpenCV](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/tree/main/vision_opencv): Packages for interfacing ROS with OpenCV, a library of programming functions to achieve real-time computer vision.
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 First, follow the general instructions and advice on robot usage in the [corresponding document](RobotUsage.md). 
 
-Then run the setup script from the [installer](https://github.com/Visual_Acoustic_Nav_Petra_2023/installation_scripts) in your `$HOME` directory on the robot's embedded machine:
+Then run the setup script from the [installer](https://github.com/paulghanem/Visual_Acoustic_Nav_Petra_2023/tree/main/installation_scripts) in your `$HOME` directory on the robot's embedded machine:
 ```
 ./installation_scripts/setup_install.sh
 ```
